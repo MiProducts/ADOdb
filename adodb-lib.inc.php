@@ -504,7 +504,9 @@ function _adodb_pageexecute_all_rows(&$zthis, $sql, $nrows, $page,
 
 	$qryRecs = false; //count records for no offset
 
-	$qryRecs = _adodb_getcount($zthis,$sql,$inputarr,$secs2cache);
+
+    // LA - 8/7/2018 - suppressing this because t-sql is filling up error.log
+    $qryRecs = @_adodb_getcount($zthis,$sql,$inputarr,$secs2cache);
 	$lastpageno = (int) ceil($qryRecs / $nrows);
 	$zthis->_maxRecordCount = $qryRecs;
 
